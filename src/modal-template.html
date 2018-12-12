@@ -1,6 +1,10 @@
  <ion-modal-view class="ionic-select-modal" ng-class="::ui.modalClass">
 
     <ion-header-bar ng-class="::ui.headerFooterClass">
+      <div class="buttons buttons-left header-item">
+            <button class="button button-icon button-clear ion-android-close"
+                    ng-click="closeModal()"></button>
+        </div>
       <h1 class="title">{{::ui.modalTitle}}</h1>
     </ion-header-bar>
 
@@ -9,8 +13,11 @@
         <i class="icon ion-ios-search placeholder-icon"></i>
         <input type="search" placeholder="{{::ui.searchPlaceholder}}" ng-model="ui.searchValue">
       </label>
-      <button type="button" class="button button-clear" ng-click="clearSearch()">
+      <button type="button" class="button button-clear btn-cancel" ng-click="clearSearch()" style="font-size: 14px !important; width: 100px !important; margin-left: 10px !important;">
         {{ ui.cancelSearchButton }}
+      </button>
+      <button type="button" ng-if="::!ui.hideReset" class="button button-clear btn-reset" ng-click="unsetValue()" style="font-size: 14px !important; width: 75px !important; position: relative !important;  top: 0 !important; bottom: 0 !important; margin-left: 0 !important;">
+        {{ ui.resetButton }}
       </button>
     </div>
 
@@ -50,10 +57,4 @@
         </div>
 
     </ion-content>
-
-    <ion-footer-bar ng-class="::ui.headerFooterClass">
-        <button type="button" class="button button-stable modal-select-close-button" ng-click="closeModal()">{{ui.cancelButton}}</button>
-        <button type="button" ng-if="::!ui.hideReset" class="button button-stable" ng-click="unsetValue()">{{ui.resetButton}}</button>
-    </ion-footer-bar>
-
 </ion-modal-view>
